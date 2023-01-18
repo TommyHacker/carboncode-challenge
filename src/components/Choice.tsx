@@ -25,24 +25,22 @@ const Choice = ({
 		index: string,
 		choice: Boolean
 	) => {
-		setChoiceMade(true);
 		// filter out this specific question and answer from the array of questions
+		setGuessCount((prevCount) => prevCount + 1);
 		currentQuiz.data.questions.map((q: Question, i: any) => {
 			if (i !== index) return;
 			// check if the users answer is correct
 			if (q.answer === choice) {
 				setCorrectGuess(true);
-
 				setScore((prevScore) => prevScore + 1);
 			} else {
 				setCorrectGuess(false);
 			}
-			setGuessCount((prevCount) => prevCount + 1);
 		});
+		setChoiceMade(true);
 	};
 	return (
 		<div
-			key={index}
 			className={`p-4 my-8 rounded-md shadow-sm shadow-slate-500 ${
 				choiceMade && 'opacity-50 cursor-default'
 			}`}>
@@ -56,13 +54,13 @@ const Choice = ({
 				{!choiceMade && (
 					<>
 						<button
-							className='ml-auto mr-auto w-20 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded'
+							className='true-btn ml-auto mr-auto w-20 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded'
 							onClick={(e) => choiceHandler(e, index, true)}
 							disabled={choiceMade}>
 							True
 						</button>
 						<button
-							className='ml-auto mr-auto w-20 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded'
+							className='false-btn ml-auto mr-auto w-20 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded'
 							onClick={(e) => choiceHandler(e, index, false)}
 							disabled={choiceMade}>
 							False

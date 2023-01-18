@@ -6,6 +6,7 @@ const QuestionInput: React.FC<{
 }> = ({ setQuestions, i }) => {
 	const [question, setQuestion] = useState('');
 	const [answer, setAnswer] = useState(false);
+	// update the questions state for [{ question : "string", answer : Boolean }]
 
 	const handleTrue = (e: any) => {
 		setAnswer(true);
@@ -18,8 +19,9 @@ const QuestionInput: React.FC<{
 	// update the questions state for [{ question : "string", answer : Boolean }]
 	useEffect(() => {
 		setQuestions((questions: any) => {
-			questions[i] = { question, answer };
-			return questions;
+			const newQuestions = [...questions];
+			newQuestions[i] = { question, answer };
+			return newQuestions;
 		});
 	}, [question, answer]);
 

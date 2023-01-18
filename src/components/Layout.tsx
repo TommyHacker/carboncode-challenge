@@ -5,10 +5,6 @@ const Layout: React.FunctionComponent<{ children: React.ReactNode }> = ({
 }) => {
 	return (
 		<>
-			<Head>
-				<title>Quizzardry </title>
-				<link rel='icon' href='/favicon.ico' />
-			</Head>
 			<Navigation />
 			<div className='page-container pt-40'>{children}</div>
 		</>

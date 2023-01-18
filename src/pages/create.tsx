@@ -21,12 +21,12 @@ const Create = () => {
 			});
 			const data = await response;
 			if (data.status !== 200) {
-				throw new Error(data.statusText);
+				throw new Error('error creating quiz');
 			} else {
 				router.push('/');
 			}
 		} catch (error) {
-			console.log(error);
+			throw new Error('error creating quiz');
 		}
 	};
 	return (
