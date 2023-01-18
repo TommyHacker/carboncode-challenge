@@ -52,3 +52,5 @@ Thank you, Tom Hacker.
 ### SideNote
 
 I would never include environment variables in production....
+
+Cypress has never been my immediate go to for testing but again i cannot believe how much better it is in permormance, developer experience and UI compared to the experience you get with other libraries.

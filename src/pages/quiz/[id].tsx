@@ -25,7 +25,6 @@ const QuizPage = () => {
 			})
 				.then((res) => res.json())
 				.then((data) => {
-					console.log(data.data);
 					return data.data;
 				}),
 		{
@@ -51,7 +50,7 @@ const QuizPage = () => {
 					{completed && (
 						<div className='flex justify-center'>
 							<button
-								className='ml-auto mr-auto w-20 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded'
+								className='back-btn ml-auto mr-auto w-20 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded'
 								onClick={() => router.replace('/')}>
 								Back
 							</button>
@@ -63,14 +62,16 @@ const QuizPage = () => {
 							currentQuiz.data.questions.map(
 								(question: Question, index: any) => {
 									return (
-										<Choice
-											index={index}
-											question={question}
-											currentQuiz={currentQuiz}
-											setScore={setScore}
-											setCompleted={setCompleted}
-											setGuessCount={setGuessCount}
-										/>
+										<div key={'container' + index}>
+											<Choice
+												index={index}
+												question={question}
+												currentQuiz={currentQuiz}
+												setScore={setScore}
+												setCompleted={setCompleted}
+												setGuessCount={setGuessCount}
+											/>
+										</div>
 									);
 								}
 							)}
