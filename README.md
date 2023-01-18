@@ -7,7 +7,7 @@
 
 ### db / prisma/sqlite
 
-- npx prisma migrate
+- npx prisma migrate dev
 
 ## Overview
 
@@ -48,3 +48,7 @@ I will definitely be using all of this moving forward and i sincerely thank whoe
 I hope that the research and implementation i used to deliver this project was enough to show my capabilities and doesnt reflect negatively on me. im sure in a few weeks i will read back through the code and fill myself with regret.
 
 Thank you, Tom Hacker.
+
+### SideNote
+
+I would never include environment variables in production....

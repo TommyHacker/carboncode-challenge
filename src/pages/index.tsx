@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 // this is the interface for the quiz object
 import { Quiz } from '../types';
+import Link from 'next/link';
 
 const HomePage = ({ quizs }: { quizs: Quiz[] }) => {
 	const router = useRouter();
@@ -45,6 +46,15 @@ const HomePage = ({ quizs }: { quizs: Quiz[] }) => {
 		<>
 			<div className='grid xl:grid-cols-2 sm:grid-cols-1 xl:p-20 sm:p-2 gap-20'>
 				{/* userQuery fetch has completed, we have the data to map through */}
+				{currentQuizs.length < 1 && (
+					<span className='text-center p-20 border-slate-300 rounded-md shadow-md border-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+						There are currently no quiz's to display. Please do {'  '}
+						<Link className='underline' href='/create'>
+							{' '}
+							Create One
+						</Link>
+					</span>
+				)}
 				{getQuizs.isSuccess &&
 					currentQuizs.map((quiz, index) => {
 						return (
