@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import { prisma } from '../utils/prismaClient';
 // this is the interface for the quiz object
 import { Quiz } from '../types';
 import Head from 'next/head';
@@ -83,14 +84,9 @@ const HomePage = ({ quizs }: { quizs: Quiz[] }) => {
 
 // fetch quizs from database on server side before rendering the page
 export const getStaticProps = async () => {
-	const url = process.env.NEXT_LOCAL_BASE_URL + '/api/quiz';
-	const response = await fetch(url);
-	if (!response.ok) {
-		throw new Error(response.statusText);
-	}
-	const data = await response.json();
-	// quizs is the name of the prop that is passed to the functional component
-	const quizs = data.data;
+	const quizs = await prisma.quiz.findMany({
+		include: { questions: true },
+	});
 	return {
 		props: {
 			quizs,
